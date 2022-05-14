@@ -81,8 +81,8 @@ main = do
 -- |-----------------------------------------------------------------------------
 -- | CONFIG
 
-myConfig = def {
-  --  Basic stuff
+myConfig = ewmh $ def {
+  -- Basic stuff
   terminal           = shell,
   focusFollowsMouse  = True,
   modMask            = mod4Mask,
@@ -95,11 +95,8 @@ myConfig = def {
   -- hooks, layouts
   layoutHook         = myLayoutHook,
   manageHook         = myManageHook,
-  handleEventHook    = ewmhDesktopsEventHook,
   logHook            = updatePointer (0.95,0.95) (0,0),
-  startupHook        = ewmhDesktopsStartup
-                       >> setWMName "XMonad"
-
+  startupHook        = setWMName "XMonad"
                        -- Launch startup programs by alias here
                        >> spawnOnce cursor
                        >> spawnOnce wallpaper
